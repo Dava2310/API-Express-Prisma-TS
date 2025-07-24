@@ -1,6 +1,7 @@
 import testModel from './test.model';
 import { CreateTestDto, UpdateTestDto } from './dto';
 import { Test } from '@prisma/client';
+import { NotFoundException } from '../../errors';
 
 /**
  * Verifica la existencia de un registro de Test en la BD por su ID.
@@ -13,7 +14,7 @@ const findValid = async (id: number): Promise<Test> => {
   const test = await testModel.getById(id);
 
   if (!test) {
-    throw new Error(`Test con ID: ${id} no encontrado.`);
+    throw new NotFoundException(`El Test con ID: ${id} no fue encontrado.`);
   }
 
   return test;
@@ -24,28 +25,18 @@ const findValid = async (id: number): Promise<Test> => {
  * @returns Una promesa que resuelve con un arreglo de todos los Tests.
  */
 const getTests = async (): Promise<Test[]> => {
-  try {
-    // Llamar al modelo para obtener las actividades
-    return await testModel.getAll();
-  } catch (error) {
-    // Manejar errores y lanzar una excepción
-    throw new Error('Error al obtener los tests: ' + (error instanceof Error ? error.message : ''));
-  }
+  // Consiguiendo los datos del modelo
+  return await testModel.getAll();
 };
 
 /**
  * Obtiene todos los datos de un Test buscado por su ID.
  * @param id ID del Test a buscar en la BD.
  * @returns Una promesa que resuelve con el Test encontrado.
- * @throws Un error si el Test no fue encontrado.
+ * @throws AppError si el Test no fue encontrado.
  */
 const getTestById = async (id: number): Promise<Test> => {
-  try {
-    // Llamar a la función findValid que ya verifica la existencia del Test.
-    return await findValid(id);
-  } catch (error) {
-    throw new Error('Error al obtener el test: ' + (error instanceof Error ? error.message : ''));
-  }
+  return await findValid(id);
 };
 
 /**
@@ -54,15 +45,11 @@ const getTestById = async (id: number): Promise<Test> => {
  * @returns Una promesa que resuelve con el nuevo Test creado.
  */
 const createTest = async (data: CreateTestDto): Promise<Test> => {
-  try {
-    // Aqui se pueden hacer validaciones de duplicados u otras operaciones
-    // que corresponden a la lógica de negocio
+  // Aqui se pueden hacer validaciones de duplicados u otras operaciones
+  // que corresponden a la lógica de negocio
 
-    // Llamar al modelo para crear el test
-    return await testModel.create(data);
-  } catch (error) {
-    throw new Error('Error al crear el test: ' + (error instanceof Error ? error.message : ''));
-  }
+  // Llamar al modelo para crear el test
+  return await testModel.create(data);
 };
 
 /**
@@ -70,18 +57,14 @@ const createTest = async (data: CreateTestDto): Promise<Test> => {
  * @param id ID del Test que se va a modificar.
  * @param data Los nuevos datos del Test para guardar los cambios.
  * @returns Una promesa que resuelve con los datos del Test modificado.
- * @throws Un Error si el Test no se encuentra con ese ID en la BD.
+ * @throws AppError si el Test no se encuentra con ese ID en la BD.
  */
 const updateTest = async (id: number, data: UpdateTestDto): Promise<Test> => {
-  try {
-    // Primero verificamos la existencia del Test
-    await findValid(id);
+  // Primero verificamos la existencia del Test
+  await findValid(id);
 
-    // Llamamos al modelo para hacer la modificación
-    return await testModel.update(id, data);
-  } catch (error) {
-    throw new Error('Error al modificar el test: ' + (error instanceof Error ? error.message : ''));
-  }
+  // Llamamos al modelo para hacer la modificación
+  return await testModel.update(id, data);
 };
 
 /**
@@ -90,15 +73,11 @@ const updateTest = async (id: number, data: UpdateTestDto): Promise<Test> => {
  * @returns Una promesa que resuelve con los datos del Test "eliminado" lógicamente.
  */
 const removeTest = async (id: number): Promise<Test> => {
-  try {
-    // Primero verificamos la existencia del Test
-    await findValid(id);
+  // Primero verificamos la existencia del Test
+  await findValid(id);
 
-    // Llamamos al modelo para hacer la eliminación
-    return await testModel.remove(id);
-  } catch (error) {
-    throw new Error('Error al eliminar el test: ' + (error instanceof Error ? error.message : ''));
-  }
+  // Llamamos al modelo para hacer la eliminación
+  return await testModel.remove(id);
 };
 
 export default {

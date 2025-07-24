@@ -2,8 +2,7 @@ import Router from 'express';
 import testController from './test.controller';
 
 // Middlewares
-import { validateRequest } from '../../middlewares/validate-request';
-import { validateAndConvertId } from '../../middlewares/validate';
+import { validateRequest, validateAndConvertId } from '../../middlewares';
 
 // Schemas
 import { createTestSchema, updateTestSchema } from './dto';
