@@ -1,6 +1,6 @@
 import app from './app';
 import prisma from './database/prisma';
-import db from '../src/database/mysql';
+import db from '@/database/mysql';
 
 async function bootstrap() {
   try {

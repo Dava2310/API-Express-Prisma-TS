@@ -1,14 +1,14 @@
 import jwt from 'jsonwebtoken';
-import { configuration } from '../config';
-import responds from '../red/responds';
+import { configuration } from '@/config';
+import responds from '@/red/responds';
 import { NextFunction, Response } from 'express';
-import { JWTPayload, RequestWithUserId } from '../common/interfaces';
+import { JWTPayload, RequestWithUserId } from '@/common/interfaces';
 
 // Modelos
-import { UserPermissionModel } from '../models/UserPermissionModel';
-import { UserRoleModel } from '../models/UserRoleModel';
-import { RolePermissionModel } from '../models/RolePermissionModel';
-import { PermissionModel } from '../models/PermissionModel';
+import { UserPermissionModel } from '@/models/UserPermissionModel';
+import { UserRoleModel } from '@/models/UserRoleModel';
+import { RolePermissionModel } from '@/models/RolePermissionModel';
+import { PermissionModel } from '@/models/PermissionModel';
 
 export const ensureAuthenticated = async (req: RequestWithUserId, res: Response, next: NextFunction) => {
   try {
