@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ZodTypeAny, ZodError, ZodObject, ZodRawShape } from 'zod';
 import { Request, Response, NextFunction } from 'express';
-import responds from '../red/responds';
+import responds from '@/red/responds';
 
 export const validateRequest = <T extends ZodTypeAny>(schema: T) => {
   return (req: Request, res: Response, next: NextFunction): void => {

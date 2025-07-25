@@ -1,4 +1,4 @@
-import prisma from '../../database/prisma';
+import prisma from '@/database/prisma';
 import { Test } from '@prisma/client';
 import { CreateTestDto, UpdateTestDto } from './dto';
 

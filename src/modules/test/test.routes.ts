@@ -2,7 +2,7 @@ import Router from 'express';
 import testController from './test.controller';
 
 // Middlewares
-import { validateRequest, validateAndConvertId } from '../../middlewares';
+import { validateRequest, validateAndConvertId, ensureAuthenticated, authorizePermission } from '@/middlewares';
 
 // Schemas
 import { createTestSchema, updateTestSchema } from './dto';
@@ -11,7 +11,7 @@ import { createTestSchema, updateTestSchema } from './dto';
 const router = Router();
 
 // Conseguir todos los Tests
-router.get('/', testController.getTests);
+router.get('/', ensureAuthenticated, authorizePermission(['get:test']), testController.getTests);
 
 // Conseguir un Test por su ID.
 router.get('/:id', validateAndConvertId('id'), testController.getTestById);

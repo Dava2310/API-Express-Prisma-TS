@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import db from '../database/mysql';
+import db from '@/database/mysql';
 
 const pool = db.pool;
 const TABLE = 'usuarios';

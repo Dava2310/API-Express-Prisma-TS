@@ -1,9 +1,10 @@
-import { RequestWithUserId } from '../../common/interfaces';
 import { Response } from 'express';
-import responds from '../../red/responds';
+import { RequestWithUserId } from '@/common/interfaces';
+import responds from '@/red/responds';
+import { Test } from '@prisma/client';
+
 import testService from './test.service';
 import { CreateTestDto, UpdateTestDto } from './dto';
-import { Test } from '@prisma/client';
 
 /**
  * Consigue los datos de todos los Tests válidos en la BD.

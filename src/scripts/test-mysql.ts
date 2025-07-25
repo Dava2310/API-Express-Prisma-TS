@@ -1,5 +1,5 @@
-import db from '../database/mysql';
-import { User } from '../models/UserModel';
+import db from '@/database/mysql';
+import { User } from '@/models/UserModel';
 
 const testMysql = async () => {
   const testEmail = 'test@example.com';

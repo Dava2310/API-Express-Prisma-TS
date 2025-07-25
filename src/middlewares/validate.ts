@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import responds from '../red/responds'; // Asegúrate de que este módulo esté bien tipado también
+import responds from '@/red/responds';
 
 export const validateAndConvertId = (paramName: string) => {
   return (req: Request, res: Response, next: NextFunction) => {

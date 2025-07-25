@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response, NextFunction } from 'express';
-import { AppError } from '../errors';
-import responds from '../red/responds';
+import { AppError } from '@/errors';
+import responds from '@/red/responds';
 
 /**
  * Middleware global para el manejo centralizado de errores.

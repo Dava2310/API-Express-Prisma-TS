@@ -3,12 +3,12 @@
 import { createPool, Pool, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { configuration } from '../config';
 
-// Pool de conexiones
 const pool: Pool = createPool({
-  host: configuration.mysql.host,
-  user: configuration.mysql.user,
+  host: configuration.mysql.host, // solo el hostname
+  user: configuration.mysql.user, // admin
   password: configuration.mysql.password,
   database: configuration.mysql.database,
+  port: Number(configuration.mysql.port) || 3306, // puerto como número
 });
 
 /**

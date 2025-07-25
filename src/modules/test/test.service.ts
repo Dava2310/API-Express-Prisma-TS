@@ -1,7 +1,7 @@
+import { Test } from '@prisma/client';
+import { NotFoundException } from '@/errors';
 import testModel from './test.model';
 import { CreateTestDto, UpdateTestDto } from './dto';
-import { Test } from '@prisma/client';
-import { NotFoundException } from '../../errors';
 
 /**
  * Verifica la existencia de un registro de Test en la BD por su ID.
